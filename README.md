@@ -1,9 +1,8 @@
-# Web Development Project 2 - *Hiragana Flashcards 1.0*
+# Web Development Project 2 - *Hiragana Flashcards 1.0.0*
 
 Submitted by: **Ricardo Ortega Pacheco**
 
-This web app: **Practing Hiragina single and composite characters. Only has a few set of characters and will be updated 
-as more is added in the data.js file. **
+This web app: **Practing Hiragina single and composite characters. Only has a few set of characters and will be updated as more is added in the data.js file. The light blue background color indicates it is a single character as the creamy orange background color indicates it is a composite character**
 
 Time spent: **9** hours spent in total
 
@@ -20,7 +19,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [ ] Cards contains images in addition to or in place of text
-- [x] Cards have different visual styles such as color based on their category
+- [x] Cards have different visual styles such as color based on their category (Light Blue for single characters, creamy orange for composite characters)
 
 The following **additional** features are implemented:
 
@@ -30,15 +29,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/59zMbfo.gif' title='flashcard gif' width='' alt='gif' />
 
-<!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
-
+GIF created with LICEcap
 ## Notes
 
 Challenges: 
