@@ -35,10 +35,10 @@ GIF created with LICEcap
 ## Notes
 
 Challenges: 
-    - Implementing Math.random in the function to randomize the cards 
-    - Ensuring the next and previous buttons worked, as the previous work but when you click on the next button,
+- Implementing Math.random in the function to randomize the cards 
+- Ensuring the next and previous buttons worked, as the previous work but when you click on the next button,
     it does not grab to correct card and picks another random card
-    - When you click on the previous button, the site crashes and leaves a blank screen with no ability to go to the
+- When you click on the previous button, the site crashes and leaves a blank screen with no ability to go to the
     next card
 
 ## License
