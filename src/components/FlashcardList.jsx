@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import Flashcards from "./Flashcard";
+import flashcards from "../data/hiragandata";
 
 const FlashcardList = () => {
 
-    const flashcards = [
-        { id: "card1", character: "あ", word: "a (あ)" },
-        { id: "card2", character: "い", word: "i (い)" },
-        { id: "card3", character: "う", word: "u (う)" },
-        { id: "card4", character: "え", word: "e (え)" },
-        { id: "card5", character: "お", word: "o (お)" },
-    ];
-    
     const [currentCard, setCurrentCard] = useState(0)
     const [history, setHistory] = useState([0])
     const [historyIndex, setHistoryIndex] = useState(0)
@@ -19,14 +12,18 @@ const FlashcardList = () => {
         const randIndex = Math.floor(Math.random() * flashcards.length);
         
         if (historyIndex == history.length -1) {
-            setHistory([...history, randIndex]);
-        } else {
-            const updateHistory = [...history.slice(0, historyIndex + 1), randIndex];
-            setHistory(updateHistory)
-        }
+            let randIndex;
+            do {
+                randIndex = Math.floor(Math.random() * flashcards.length);
 
-        setHistoryIndex(historyIndex + 1);
-        setCurrentCard(randIndex);
+            } while (randIndex == currentCard);
+            setHistory([...history, randIndex]);
+            setHistoryIndex(historyIndex + 1);
+            setCurrentCard(randIndex);
+        } else {
+            setHistoryIndex(historyIndex + 1);
+            setCurrentCard(history[historyIndex + 1]);
+        }
     }
     
     const handlePrev = () => {
@@ -39,6 +36,7 @@ const FlashcardList = () => {
     return (
         <div>
             <Flashcards 
+                id={flashcards[currentCard].id}
                 character={flashcards[currentCard].character}
                 word={flashcards[currentCard].word}
                 />
