@@ -11,6 +11,8 @@ const FlashcardList = () => {
     const [input, setInput] = useState({
         character: "",
     });
+    const [counter,setCounter] = useState(0)
+    const [streak, setStreak] = useState(0)
 
     // Get the current character and word
     const currentCharacter = flashcards[currentCard].character;
@@ -28,8 +30,17 @@ const FlashcardList = () => {
     
         if (correctAnswer === inputWord) {
             setCheckedCharacter("correct");
+            setCounter(prevCounter => {
+                const newCounter = prevCounter + 1;
+                
+                if (newCounter > streak) {
+                    setStreak(newCounter)
+                }
+                return newCounter
+            });
         } else {
             setCheckedCharacter("wrong");
+            setCounter(0)
         }
     };
     const handleNext = () => {
@@ -58,12 +69,13 @@ const FlashcardList = () => {
 
     return (
         <div>
+            <h4>Current Streak: {counter}, Streak: {streak}</h4>
             <Flashcards 
                 id={flashcards[currentCard].id}
                 character={currentCharacter} 
                 word={trueWord} 
             />
-            
+            <h3>Current Streak: </h3>
             <div className="answer-space" id={checkedCharacter}>
                 {input.character} 
             </div>
