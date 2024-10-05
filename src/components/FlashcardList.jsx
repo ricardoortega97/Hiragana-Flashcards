@@ -1,22 +1,43 @@
 import React, { useState } from "react";
 import Flashcards from "./Flashcard";
 import flashcards from "../data/hiragandata";
+import FlashcardChoices from "./flashcardChoice";
 
 const FlashcardList = () => {
+    const [currentCard, setCurrentCard] = useState(0);
+    const [history, setHistory] = useState([0]);
+    const [historyIndex, setHistoryIndex] = useState(0);
+    const [checkedCharacter, setCheckedCharacter] = useState("");
+    const [input, setInput] = useState({
+        character: "",
+    });
 
-    const [currentCard, setCurrentCard] = useState(0)
-    const [history, setHistory] = useState([0])
-    const [historyIndex, setHistoryIndex] = useState(0)
+    // Get the current character and word
+    const currentCharacter = flashcards[currentCard].character;
+    const trueWord = flashcards[currentCard].word;
 
+    const onCheckedAnswer = () => {
+        const correctAnswer = flashcards[currentCard].word.split(" ")[0].trim(); 
+    
+        const inputWord = input.character.trim();
+    
+        if (!inputWord) {
+            alert("Please enter a character.");
+            return;
+        }
+    
+        if (correctAnswer === inputWord) {
+            setCheckedCharacter("correct");
+        } else {
+            setCheckedCharacter("wrong");
+        }
+    };
     const handleNext = () => {
-        const randIndex = Math.floor(Math.random() * flashcards.length);
-        
-        if (historyIndex == history.length -1) {
+        if (historyIndex === history.length - 1) {
             let randIndex;
             do {
                 randIndex = Math.floor(Math.random() * flashcards.length);
-
-            } while (randIndex == currentCard);
+            } while (randIndex === currentCard);
             setHistory([...history, randIndex]);
             setHistoryIndex(historyIndex + 1);
             setCurrentCard(randIndex);
@@ -24,25 +45,47 @@ const FlashcardList = () => {
             setHistoryIndex(historyIndex + 1);
             setCurrentCard(history[historyIndex + 1]);
         }
-    }
-    
+        setCheckedCharacter(""); 
+        setInput({ character: "" }); 
+    };
+
     const handlePrev = () => {
-        if (historyIndex > 0){
-            setHistoryIndex(historyIndex -1);
-            setCurrentCard(history[historyIndex -1 ]);
+        if (historyIndex > 0) {
+            setHistoryIndex(historyIndex - 1);
+            setCurrentCard(history[historyIndex - 1]);
         }
-    }
+    };
 
     return (
         <div>
             <Flashcards 
                 id={flashcards[currentCard].id}
-                character={flashcards[currentCard].character}
-                word={flashcards[currentCard].word}
-                />
+                character={currentCharacter} 
+                word={trueWord} 
+            />
+            
+            <div className="answer-space" id={checkedCharacter}>
+                {input.character} 
+            </div>
+            <FlashcardChoices 
+                handleChange={(e) => 
+                    setInput((prevState) => ({
+                        ...prevState,
+                        [e.target.name]: e.target.value, 
+                    }))
+                }
+                label="character" 
+                choices={[flashcards[currentCard].character]} 
+                currentVal={input.character} 
+            />
+            
+            <button type="button" className="button submit" onClick={onCheckedAnswer}>
+                Check answer 
+            </button>
             <button onClick={handlePrev} disabled={historyIndex === 0}>Previous</button>
-            <button onClick={handleNext} >Next</button>
+            <button onClick={handleNext}>Next</button>
         </div>
-    )
-}
+    );
+};
+
 export default FlashcardList;

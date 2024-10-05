@@ -4,6 +4,11 @@
   padding: 2rem;
   text-align: center;
 }
+li {
+  margin: 3px 10%;
+  border-radius: 15px
+}
+
 .card {
   display: flex;
   justify-content: center;
@@ -43,4 +48,34 @@
 }
 .composite {
   background-color: blanchedalmond;
+}
+
+@keyframes logo-spin {
+  0% {
+      transform: rotate(0)
+  }
+
+  to {
+      transform: rotate(360deg)
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+      animation: logo-spin infinite 20s linear
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+      color:#213547;
+      background-color: #fff
+  }
+
+  a:hover {
+      color: #747bff
+  }
+
+  button {
+      background-color: #f9f9f9
+  }
 }
