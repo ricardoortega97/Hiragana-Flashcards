@@ -15,7 +15,7 @@ The following **required** functionality is completed:
 - [x] **A list of card pairs is created**
 - [x] **Clicking on the card shows the corresponding component of the information pair**
 - [x] **Clicking the next button displays a random new card**
-**New**
+- **New**
 - [x] **The user can enter their guess in a box before seeing the flipside of the card**
 - [x] **Clicking on a submit button shows visual feedback about whether the answer was correct or incorrect**
 - [x] **A back button is displayed on the card and can be used to return to the previous card in a set sequence**
@@ -49,7 +49,7 @@ Challenges:
     it does not grab to correct card and picks another random card
 - When you click on the previous button, the site crashes and leaves a blank screen with no ability to go to the
     next card
-**New**
+- **New**
 - User input: Submit button was not providing a feedback as will indicating the corisponding color
 - Input text was not active and could not enter any text, even when the text was added, the submit gave the same callback alert popup of invalid word
 
